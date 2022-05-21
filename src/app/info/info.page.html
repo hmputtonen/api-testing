@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Details</ion-title>
+    <ion-icon class="ion-padding" name="arrow-back" slot="start" routerLink="/home"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-row style="height:100%; flex-direction: column" class="ion-align-items-center ion-justify-content-between">
+      <ion-col size-lg="6">
+          <ion-card>
+              <img [src]="img">
+              <div class="ion-padding">
+              <ion-card-header class="ion-text-center"> 
+                <ion-card-title>{{activityName}}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-subtitle *ngIf="address">
+                <p class="ion-text-center"><b> Osoite: {{address}}</b></p>
+                <p class="ion-text-center" *ngIf="duration"><i>Kesto: {{duration}}</i></p>
+              </ion-card-subtitle>
+
+              <ion-row> 
+                <ion-col class="ion-text-center" *ngIf="info_url" >
+                  <a href="{{info_url}}" target="_blank" style="text-decoration: none">
+                    <ion-chip  outline color="warning">
+                      <ion-label>Lue lisätietoja</ion-label>
+                      <ion-icon name="globe"></ion-icon>
+                    </ion-chip>
+                  </a>
+                </ion-col>
+            </ion-row> 
+
+              <ion-card-subtitle>
+                <p [innerHTML]="description"></p>
+              </ion-card-subtitle>
+            </div>
+          </ion-card>
+      </ion-col>
+  </ion-row>  
+</ion-content>

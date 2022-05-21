@@ -1,14 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center ion-padding">
+     <img style="max-height: 60px;" src="assets\img\logo_helsinkInfo.png">
     </ion-title>
   </ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-item color="dark">
+        <ion-label>Kategoria</ion-label>
+        <ion-select (ionChange)="information.getInCategory()" [(ngModel)]="information.filterTag" placeholder="Valitse">
+          <ion-select-option value="all">Kaikki</ion-select-option>
+          <ion-select-option value="outdoor recreation">Ulkoilu</ion-select-option>
+          <ion-select-option value="food">Ruoka</ion-select-option>
+          <ion-select-option value="culture">Kulttuuri</ion-select-option>
+          <ion-select-option value="sightseeing">Nähtävyydet</ion-select-option>
+          <ion-select-option value="nature">Luonto</ion-select-option>
+          <ion-select-option value="bike tour">Pyöräily</ion-select-option>
+          <ion-select-option value="sea">Meri</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-card class="ion-text-center" *ngIf="information.errorMsg" color="primary">
+    <ion-card-content>{{information.errorMsg}}</ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+      <ion-row style="height:100%; flex-direction: column" class="ion-align-items-center ion-justify-content-between">
+        <ion-col size-lg="6">
+          <ion-card *ngFor="let activity of information.information; let i = index" [routerLink]="'/info/' + i">
+              <img [src]="information.img[i]">
+              <ion-card-header> 
+                <ion-card-title class="ion-text-center">{{information.activityName[i]}}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-subtitle  class="ion-text-center ion-padding">
+                <p>{{information.where_and_when[i]}}</p>
+              </ion-card-subtitle>
+            
+          </ion-card>
+        </ion-col>  
+      </ion-row>  
+  </ion-grid>
 </ion-content>

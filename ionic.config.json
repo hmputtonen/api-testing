@@ -1,5 +1,7 @@
 {
-  "name": "HelsinkInformation",
-  "integrations": {},
+  "name": "HelsinkInfo",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
